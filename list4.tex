@@ -1,0 +1,146 @@
+%!TeX spellcheck = en-US, ru-RU
+\documentclass[a4paper]{article}
+\usepackage[warn]{mathtext}
+\usepackage{amsmath}
+
+\usepackage{cancel}
+\usepackage[normalem]{ulem}
+
+\usepackage[T2A]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage[russian]{babel}
+
+\usepackage[14pt]{extsizes}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{amssymb}
+\usepackage{faktor}
+\usepackage{multicol}
+\RequirePackage{caption}
+
+%\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+\DeclareCaptionLabelSeparator{defffis}{ : }
+%\DeclareMathOperator{\tg}{tg}
+%\DeclareMathOperator{\dif}{\mathbf{d}}
+\captionsetup{justification=centering,labelsep=defffis}
+
+% \usepackage[unicode, pdftex]{hyperref}
+\usepackage{hyperref}
+\hypersetup{
+  colorlinks   = true, %Colours links instead of ugly boxes
+  urlcolor     = blue, %Colour for external hyperlinks
+  linkcolor    = blue, %Colour of internal links
+  citecolor   = red %Colour of citations
+}
+
+\usepackage{setspace,amsmath}
+\usepackage[left=20mm, top=15mm, right=15mm, bottom=15mm, nohead, footskip=10mm]{geometry} % настройки полей документа
+\usepackage{graphicx}
+
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\seg}[2]{\left[#1, \:#2\right]}
+\renewcommand{\ch}[0]{\mathrm{ch}\,}
+\renewcommand{\sh}[0]{\mathrm{sh}\,}
+\newcommand{\dx}[0]{\,dx}
+\newcommand{\ds}[0]{\,ds}
+\renewcommand{\phi}{\varphi}
+\renewcommand{\epsilon}{\varepsilon}
+\renewcommand{\Re}[1]{\mathrm{Re}\left(#1\right)}
+\renewcommand{\Im}[1]{\mathrm{Im}\left(#1\right)}
+
+\newcommand{\task}[2]{A#1 $\Diamond$ #2}
+\newcommand{\fact}[2]{\faktor{#1}{\left(#2\right)}}
+
+\newcommand{\Deg}{^{\circ}}
+
+\title{Листок №4}
+\author{Кац Лев}
+
+\setlength\parindent{0pt}
+
+\begin{document}
+  \maketitle
+  \subsection*{\task{4}{1}}
+  Перепишем нашу рациональную функцию:
+
+  $$f/g = \sum_{i = 1}^n \frac{\alpha_i}{(x - a_i)}.$$
+
+  По предложению 4.1 $\alpha_i$ -- многочлен (в нашем случае константа), что класс в кольце вычетов $\mathbb{K}\left[x\right]/(x - a_i)$ равен $\left[f\right] \cdot [g/(x - a_i)]^{-1}$.
+
+  Заметим, что $\forall \: q \in \mathbb{K}\left[x\right]$ $\left[q\right]_{(x - a_i)} = \left[q(a_i)\right]_{(x - a_i)}$.
+
+  Заметим еще следующее свойство производной:
+
+  $$\left[g'\right] = \left[(x - a_i) \left(\frac{g}{(x - a_i)}\right)' + (x - a_i)' \frac{g}{(x - a_i)}\right] = \left[\frac{g}{(x - a_i)}\right] = \left[g'(a_i)\right]$$
+
+  Отсюда из единственности $\alpha_i = f(a_i)/g'(a_i)$.
+
+  \subsection*{\task{4}{2}}
+  \subsubsection*{a)}
+  \begin{eqnarray*}
+      \frac{1}{2t^2 - 3t + 1} &=& \frac{1}{(2t - 1)(t - 1)} = \frac{1}{t - 1} - \frac{2}{2t - 1} =\\
+      &=& -(1 + t + t^2 + ...) + 2 (1 + 2t + 4t^2 + ...) = \sum_{k \ge 0} (2^{k + 1} - 1) t^k
+  \end{eqnarray*}
+  \subsubsection*{б)}
+  \begin{eqnarray*}
+      (t^4 + 2t^3 - 7t^2 - 20t - 12)^{-1} = -\frac{1}{4(t + 1)} + \frac{6}{25(t + 2)} + \frac{1}{5(t + 2)^2} + \frac{1}{100(t - 3)} =\\
+      = -\frac{1}{4}(1 - t + t^2 - ...) + \frac{3}{25}(1 - t/2 + t^2/4 - ...) -\\- \frac{1}{300}(1 + t/3 + t^2/9 + ...) +
+      + \frac{1}{20}\sum_{k \ge 0} \binom{k + 1}{1} \left(-\frac{t}{2}\right)^k = \\
+      = \sum_{k \ge 0} \left[\frac{-1}{4}(-1)^k + \frac{3}{25}\left(-\frac{1}{2}\right)^k - \frac{1}{300}\left(\frac{1}{3}\right)^k + \frac{1}{20}(k  + 1)\right]t^k
+  \end{eqnarray*}
+  \subsubsection*{в)}
+  \begin{eqnarray*}
+      \sqrt[3]{1 + 2t} = (1 + (2t))^{1/3} = \sum_{k\ge 0} 2^k \binom{1/3}{k}x^k
+  \end{eqnarray*}
+  \subsubsection*{г)}
+  \begin{eqnarray*}
+      \sqrt[3]{1 - 3t} = (1 - (3t))^{-1/3} = \sum_{k\ge 0} (-3)^k \binom{-1/3}{k}x^k
+  \end{eqnarray*}
+
+
+  \subsection*{\task{4}{3}}
+  Подберем коэффициенты $b_0, b_1$ ряда $(b_0x + b_1) / (1 - 2x + x^2) = (b_0x + b_1)/(x - 1)^2$, чтобы получить $a_0 = 1, a_1 = -1$. Это $b_0 = 3, b_1 = 1$.
+
+  Разложим рациональную функцию на простейшие дроби и получим выражения для членов ряда:
+
+  $$\frac{b_0x + b_1}{(1 -x)^2} = -\frac{3}{(x - 1)} - \frac{2}{(x-1)^2} = 3\sum_{k\ge 0} x^k -2 \sum_{k\ge 0} \binom{k + 1}{1}x^k$$
+
+  Отсюда выражение для очередного члена последовательности:
+
+  $$a_k = 3 - 2\binom{k + 1}{1} = 3 - 2(k + 1)$$
+
+  \subsection*{\task{4}{4}}
+  От противного: пусть $\exp x \in \mathbb{Q}\left[x\right]$. Тогда начиная с некоторого $m$ для коэффициентов ряда $z_k$ при $k \ge m$ будет выполняться рекуррентное соотношение:
+
+  $$z_k = a_1 z_{k - 1} + ... + a_n z_{k - n} = \frac{1}{k!} = \sum \alpha_i^k \phi(k) \equiv f(k),$$
+
+  Что невозможно, поскольку $\lim_{k\to \infty} = 1 / (k! f(k)) = 0 \ne 1$.
+  \subsection*{\task{4}{5}}
+  Заметим, что последовательность коэффициентов ряда, состоящего из 0 и 1, соответствующая любой рациональной функции будет начиная с какого-то номера периодической. Почему? Возьмем рациональную функцию. Ей соответствует ряд, коэффициенты которого удовлетворяют некоторому рекуррентному соотношению
+  $z_k = \alpha_1 z_{k - 1} + ... + \alpha_n z_{k - n}$ (во всяком случае с некоторой позиции). Тогда каждый следующий коэффициент выражается через $n$ предыдущих. Поскольку есть только конечное количество последовательностей длины $n$ из нулей и единиц, неизбежно случится повторение. А тогда мы получим периодическую последовательность (во всяком случае с некоторого номера).
+
+  Таким образом, нужно построить ряд, последовательность членов которого не содержит никаких периодов. Приведем пример:
+
+  $$1 + 0 \cdot q^1 + 0 \cdot q^2 + 1 \cdot q^3 + 1 \cdot q^4 + 1 \cdot q^5 + 0 \cdot q^6 + 0 \cdot q^7 + 0 \cdot q^8 + 0 \cdot q^9 + ...$$
+
+  то есть 1 единица, 2 нуля, 3 единицы, 4 нуля, ...
+
+  \subsection*{\task{4}{7}}
+  \subsubsection*{1.}
+  Поставим в однозначное соответствие каждой диаграмме Юнга из $\le m$ строк веса $n$ "транспонированную" диаграмму такого же веса, любого числа строк, но в каждой из них не более $m$ "квадратиков", то есть мы нашу диаграмму повернули на 90 градусов и отразили от горизонтальной оси, чтобы получилась корректная другая диаграмма.
+
+  Заметим, что полученные диаграммы делятся на два непересекающихся множества: те, у которых в каждой строке не более $m - 1$ квадратиков (их $p_{m - 1}(n)$) и те, у которых в первой строке ровно $m$ квадратиков (их $p_m(n - m)$). Тогда:
+
+  $$p_m(n) = p_{m - 1}(n) + p_{m}(n - m)$$
+  \subsubsection*{2.}
+  Используя подход "транспонированных" диаграмм из первого пункта, попробуем сконструировать производящую функцию. Итак, вспомним, что чтобы построить такую диаграмму нам нужно взять какое-то количество (возможно нулевой) строк длины 1, какое-то количество строк длины 2, и так далее до $m$, чтобы сумма длин была равна весу $n$. То есть мы хотим посчитать количество наборов $\alpha_i$, что $\alpha_1 + 2 \alpha_2 + ... + m \alpha_m = n$. Рассмотрим следующее произведение рядов:
+
+  $$(1 + q + q^2 + ...) \cdot (1 + q^2 + q^4 + ...) \cdot ... \cdot (1 + q^m + ...) = \frac{1}{(1 - q)\cdot(1 - q^2)\cdot ... \cdot (1 - q^m)}$$
+
+  Посмотрим на $n$ коэффициент. Он как раз является искомым количеством наборов $\alpha_i$:
+
+  $$
+  \frac{1}{(1 - q)\cdot(1 - q^2)\cdot ... \cdot (1 - q^m)} = \sum_{n \ge 0} p_m(n)q^n
+  $$
+\end{document}
